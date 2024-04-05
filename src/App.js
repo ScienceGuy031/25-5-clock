@@ -37,8 +37,8 @@ class App extends React.Component {
     document.getElementById("session-decrement").disabled = false;
     document.getElementById("session-increment").disabled = false;
     clearInterval(this.timer);
-    document.getElementById('beep').pause();
-    document.getElementById('beep').currentTime = 0;
+    document.getElementById("beep").pause();
+    document.getElementById("beep").currentTime = 0;
   }
 
   startStop() {
@@ -48,7 +48,7 @@ class App extends React.Component {
     const breakIncr = document.getElementById("break-increment");
     const seshDecr = document.getElementById("session-decrement");
     const seshIncr = document.getElementById("session-increment");
-    const beep = document.getElementById('beep');
+    const beep = document.getElementById("beep");
 
     this.setState({
       running: running,
@@ -70,10 +70,14 @@ class App extends React.Component {
           if (this.state.break) {
             breakBool = false;
             seconds = this.state.sessionLength * 60;
+            beep.pause();
+            beep.currentTime = 0;
             beep.play();
           } else {
             breakBool = true;
             seconds = this.state.breakLength * 60;
+            beep.pause();
+            beep.currentTime = 0;
             beep.play();
           }
         }
@@ -132,12 +136,15 @@ class App extends React.Component {
 
         {/* Length Labels */}
         <div className="row">
-          <div id="break-label" className="col-6">
+          <div className="col-2"></div>
+          <div id="break-label" className="col-3">
             Break Length
           </div>
-          <div id="session-label" className="col-6">
+          <div className="col-2"></div>
+          <div id="session-label" className="col-3">
             Session Length
           </div>
+          <div className="col-2"></div>
         </div>
 
         {/* Button and Time row */}
@@ -205,6 +212,21 @@ class App extends React.Component {
           </button>
 
           <div className="col-5"></div>
+        </div>
+
+        {/* Audio Credits */}
+        <div id="credit" className="row">
+          <p>
+            Sound Effect from{" "}
+            <a
+              href="https://www.zapsplat.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary-emphasis"
+            >
+              ZapSplat
+            </a>
+          </p>
         </div>
       </div>
     );

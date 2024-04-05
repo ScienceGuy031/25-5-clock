@@ -9,3 +9,12 @@ div {
 h1 {
   padding-bottom: 5%;
 }
+
+#credit p {
+  font-size: 1rem;
+  padding-top: 5%;
+}
+
+#timer-label{
+  padding-top: 5%;
+}
